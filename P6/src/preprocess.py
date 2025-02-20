@@ -33,6 +33,6 @@ def get_datasets():
 def get_transfer_datasets():
     # Your code replaces this by loading the dataset
     # you can use image_dataset_from_directory, similar to how the _split_data function is using it
-    train_dataset, validation_dataset, test_dataset = None, None, None
+    train_dataset, validation_dataset, test_dataset = get_datasets()
     # ...
     return train_dataset, validation_dataset, test_dataset
