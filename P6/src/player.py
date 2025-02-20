@@ -107,8 +107,15 @@ class UserWebcamPlayer:
         # The classification value should be 0, 1, or 2 for neutral, happy or surprise respectively
 
         # return an integer (0, 1 or 2), otherwise the code will throw an error
-        return 1
-        pass
+        self.model = models.load_model("basic_model_12_epochs_timestamp_1740066309.keras")
+        
+        img_resized = cv2.resize(img, (150, 150))
+
+        predictions = self.model.predict(img_resized)
+
+        predicted_class = np.argmax(predictions)
+
+        return int(predicted_class)
     
     def get_move(self, board_state):
         row, col = None, None
